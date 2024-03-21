@@ -1,0 +1,102 @@
+html{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.wordlGame{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+
+  &__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 275px;
+    padding: 2rem;
+    background-color: antiquewhite;
+  }
+
+  &__title{
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    cursor: default;
+  }
+
+  
+
+  
+}
+
+.difficulty{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &__info{
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  &__line{
+    border-width: 3px;
+    border-style: solid;
+    width: 100%;
+    color: white;
+  }
+    
+  &__setLength{
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  &__setUnique{
+
+  }
+}
+
+.guess{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__letterBox{
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__letterInput{
+    width: 5rem;
+    height: 5rem;  
+    border-radius: 4px;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+
+    &::placeholder{
+      color: white;
+    }
+
+    &[type="text"]{
+      background-color: rgb(4, 255, 0);
+    }
+  }
+
+  &__submit{
+    font-size: 1.2rem;
+    padding: 0.6rem;
+    border-radius: 4px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    
+  }
+}
