@@ -1,18 +1,21 @@
+import { useState } from "react";
 
-export default function LetterInput() {
+export default function LetterInput({ onGuess }) {
+  const [newGuess, setNewGuess] = useState('');
 
   return (
     <>
-    <h2 className="wordlGame__title">Guess the word!</h2>
-    <form className="guess" action="">
-      <div className='guess__letterBox'>
-    <input className='guess__letterInput' type="text" maxLength={1} placeholder='?'></input>
-    <input className='guess__letterInput' type="text" maxLength={1} placeholder='?'></input>
-    <input className='guess__letterInput' type="text" maxLength={1} placeholder='?'></input>
-    <input className='guess__letterInput' type="text" maxLength={1} placeholder='?'></input>
-    </div>
+    <form className="guess" action="" onSubmit={(e) => {
+      e.preventDefault();
+      onGuess(newGuess)
+    }
+    }>
+      <input className='guess__letterInput' type="text" onChange={(e) => {
+        setNewGuess(e.target.value)
+      }}></input>
     <button className="guess__submit">Make guess!</button>
     </form>
+    <a href="/">Give up</a>
     </>
   );
 }
