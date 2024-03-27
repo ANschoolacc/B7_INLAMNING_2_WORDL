@@ -1,14 +1,19 @@
 
 import express from "express";
-import fs from 'fs/promises'
+import fs from 'fs'
+import getDictionary from "../utils/wordList.js";
+
+import apiRouter from "../routes/api.js";
 
 export const app = express();
+app.use(express.json())
 
 app.get('/', async (req, res) => {
-  const buf = await fs.readFile('./public/index.html');
-  const html = buf.toString();  
-  res.send(html)
+
 })
+
+app.use('/api', apiRouter )
+
 
 app.use(express.static('./public'));
 
