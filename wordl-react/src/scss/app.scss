@@ -11,7 +11,7 @@ html{
   &__wrapper{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     flex-direction: column;
     min-width: 275px;
     padding: 2rem;
@@ -72,21 +72,7 @@ html{
   }
 
   &__letterInput{
-    width: 5rem;
-    height: 5rem;  
-    border-radius: 4px;
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    color: white;
-
-    &::placeholder{
-      color: white;
-    }
-
-    &[type="text"]{
-      background-color: rgb(4, 255, 0);
-    }
+    
   }
 
   &__submit{
