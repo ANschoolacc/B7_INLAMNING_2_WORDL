@@ -1,14 +1,15 @@
-import { useState } from "react"
 
-export default function GuessBoxes({guess}){
-  /*const [guesses, setGuesses] = useState([]);
+export default function GuessBoxes({ results }) {
 
-  setGuesses(guess.split(''))
-return(
-  <div className="guessContainer">
-  {guesses.forEach(obj => {
-    <div className="guessBox"></div>
-  })}
-  </div>
-)*/
-}
+  return (
+    <div className="result">
+      {results.map((word, index) => {
+        return (<ul className="result__word" key={index}>
+          {word.map((letter, index) => {
+            return (<li className={`result__letter result__letter--${letter.result}`} key={index}>{letter.letter}</li>)
+          })}
+        </ul>)
+      })}
+    </div>
+  )
+}//
