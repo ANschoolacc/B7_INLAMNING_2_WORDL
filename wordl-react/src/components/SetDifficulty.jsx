@@ -30,7 +30,7 @@ export default function SetDifficulty({ onChosenDifficulty }) {
             const numericValue = e.target.value.replace(/[^0-9]/g, "");
             setLength(Number(numericValue))
           }}></input>
-        <hr className="difficulty__line" />
+        <hr className="wordlGame__line" />
         <label className="difficulty__info">Set if all letters should be unique:</label>
 
         <input className="difficulty__setUnique" id="setUnique" type="checkbox" value={isChecked}
