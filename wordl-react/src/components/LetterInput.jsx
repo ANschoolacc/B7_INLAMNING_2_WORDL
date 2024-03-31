@@ -8,7 +8,7 @@ export default function LetterInput({ onGuess, maxInput, abort }) {
       <form className="guess" action=""
         onSubmit={(e) => {
           e.preventDefault();
-          onGuess(newGuess);
+          onGuess(newGuess.toUpperCase());
         }
         }>
         <input className='guess__letterInput' maxLength={maxInput} type="text"
