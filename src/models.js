@@ -1,12 +1,13 @@
 import mongoose from "mongoose";
 
 const Score = mongoose.model('Score', {
-  name: String,
+  sessionId: String,
   word: String,
-  time: Number,
-  guesses: Number,
-  wordLength: Number,
-  uniqueLetters: String
+  startTime: Number,
+  guesses: Array,
+  endTime: Number,
+  uniqueLetters: String,
+  name: String,
 });
 
 export { Score };
