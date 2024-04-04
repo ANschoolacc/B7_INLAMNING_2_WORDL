@@ -1,24 +1,10 @@
 import { useState } from "react";
 
 
-export default function SendScore({ highscore, abort }) {
+export default function SendScore({ onPostScore, score, abort }) {
   const [posted, setPosted] = useState(false)
   const [player, setPlayer] = useState('');
   const [error, setError] = useState()
-
-  async function handleScore(playerName) {
-    setPosted(!posted)
-    await fetch("/api/newScore", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        ...highscore,
-        name: playerName,
-      }),
-    });
-  }
 
   return (
     <div className="sendScore__filter">
@@ -28,15 +14,16 @@ export default function SendScore({ highscore, abort }) {
           <h2 className="sendScore__title--small">Post you'r score and/or start a new game</h2>
           <hr className="wordlGame__line" />
           <ul className="sendScore__score" >
-            <li className="sendScore__scoreItem" >{`Word: 
-        ${highscore.word}`}</li>
-            <li className="sendScore__scoreItem">{`Length of word: 
-        ${highscore.length}`}</li>
-            <li className="sendScore__scoreItem">{`Guesses: 
-        ${highscore.guesses}`}</li>
-            <li className="sendScore__scoreItem">{`Time: 
-        ${highscore.time}.sec`}</li>
-            <li className="sendScore__scoreItem">{`Only unique letters chosen: ${highscore.uniqueletters}`}</li>
+            <li className="sendScore__scoreItem" >
+              {`Word: ${score.word.toUpperCase()}`}</li>
+            <li className="sendScore__scoreItem">
+              {`Length of word: ${score.word.length}`}</li>
+            <li className="sendScore__scoreItem">
+              {`Guesses: ${score.guesses.length}`}</li>
+            <li className="sendScore__scoreItem">
+              {`Time: ${(score.endTime - score.startTime) / 1000}.sec`}</li>
+            <li className="sendScore__scoreItem">
+              {`Only unique letters: ${score.uniqueLetters}`}</li>
           </ul>
           <form action="" className="sendScore__post" onSubmit={(e) => {
             e.preventDefault();
@@ -45,7 +32,8 @@ export default function SendScore({ highscore, abort }) {
               return
             }
             setError()
-            handleScore(player)
+            onPostScore(player)
+            setPosted(true)
           }}>
             <input className="sendScore__postInput" placeholder="Input name" type="text" maxLength={10} onChange={(e) => {
               setPlayer(e.target.value)
