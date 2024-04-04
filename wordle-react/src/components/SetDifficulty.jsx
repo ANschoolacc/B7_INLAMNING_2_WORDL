@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function SetDifficulty({ onChosenDifficulty, error }) {
+export default function SetDifficulty({ onStartGame, error }) {
   const [length, setLength] = useState('')
   const [isChecked, setIsChecked] = useState(false);
   const checkHandler = () => {
@@ -21,7 +21,7 @@ export default function SetDifficulty({ onChosenDifficulty, error }) {
             length: length,
             uniqueLetters: isChecked
           }
-          onChosenDifficulty(difficulty)
+          onStartGame(difficulty)
         }}>
         <label className="difficulty__info" >Choose length of word between 3 and 8:</label>
         <input className="difficulty__setLength" id="setLength" type="text" value={length} maxLength={2}

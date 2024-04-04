@@ -8,51 +8,50 @@ function App() {
   const [results, setResults] = useState([]);
   const [startGame, setStartGame] = useState(false);
   const [win, setWin] = useState(false);
-  const [timer, setTimer] = useState();
-  const [guesses, setGuesses] = useState(0);
-  const [wordLength, setWordLength] = useState();
-  const [highscore, setHighscore] = useState();
   const [showError, setShowError] = useState(false);
+  const [wordLength, setWordLength] = useState();
+  const [score, setScore] = useState()
   const [errorMessage, setErrorMessage] = useState();
-  const timerId = useRef(null)
+  const [gameId, setGameId] = useState();
+  const timerId = useRef(null);
 
   useEffect(() => {
-  if(showError){
+    if (showError) {
+      timerId.current = setTimeout(() => {
+        setShowError(false)
+      }, 3000)
+    }
+    return () => {
+      clearTimeout(timerId.current)
+    };
+  }, [showError])
 
-    timerId.current = setTimeout(() => {
-      setShowError(false)
-  }, 3000)
-  }
-  return () => {
-    clearTimeout(timerId.current)
-  };
-}, [showError])
-
-  async function handleDifficulty(chosenDifficulty) {
-    setStartGame(!startGame)
-    setTimer(Date.now())
-    setWordLength(chosenDifficulty.length);
-    setHighscore({
-      ...highscore,
-      length: chosenDifficulty.length,
-      uniqueletters: chosenDifficulty.uniqueLetters ? 'Yes' : 'No',
-
-    })
-
-    fetch("/api/difficulty", {
+  async function handleStartGame(chosenDifficulty) {
+    const response = await fetch("/api/new_game", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(chosenDifficulty),
     });
+
+    if(response.ok){
+    setStartGame(!startGame);
+    setWordLength(chosenDifficulty.length);
+    const id = await response.json();
+    setGameId(id);
+    }else {
+      handleError('No word found')
+      throw new Error(`Something went wrong with the request. Error code: ${response.status}`);
+    }
   }
 
   async function handleGuess(newGuess) {
     if (!newGuess) {
       return
     }
-    const response = await fetch("/api/feedback", {
+
+    const response = await fetch(`/api/${gameId}/guess`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,24 +59,40 @@ function App() {
       body: JSON.stringify({ newGuess }),
     });
 
+    if(response.ok){
     const data = await response.json();
-    if (!data.length) {
+
+    if (!data[0].length) {
       return
     }
-    setGuesses(guesses + 1)
+
     const updatedresults = [
       ...results,
-      data
+      data[0]
     ]
+
     setResults(updatedresults)
-    if (data.map((letter) => letter.result).every(v => v === 'correct')) {
-      setHighscore({
-        ...highscore,
-        word: newGuess,
-        time: (Date.now() - timer) / 1000,
-        guesses: (guesses + 1),
-      })
+
+    if (data[1]) {
+      setScore(data[1])
       setWin(!win)
+    }
+  }else {
+    handleError('Something went wrong');
+    throw new Error(`Something went wrong with the request. Error code: ${response.status}`);
+  }
+  }
+
+  async function handleScore(playerName) {
+    const response = await fetch(`/api/${gameId}/score`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ playerName }),
+    });
+    if(!response.ok){
+      throw new Error(`Something went wrong with the request. Error code: ${response.status}`);
     }
   }
 
@@ -85,9 +100,8 @@ function App() {
     setStartGame(!startGame)
     setWin(false)
     setResults([])
-    setTimer()
-    setGuesses(0)
-    setHighscore()
+    setScore();
+    setGameId();
   }
 
   function handleError(message) {
@@ -97,14 +111,14 @@ function App() {
 
   return (
     <>
-      {win && < SendScore highscore={highscore} abort={handleAbort} error={handleError} />}
+      {win && < SendScore onPostScore={handleScore} score={score} abort={handleAbort} error={handleError} />}
       <div className="wordlGame">
         <div className="wordlGame__wrapper">
           <h2 className="wordlGame__title">
             {!startGame ? "Choose difficulty!" : "Guess the word!"}
           </h2>
           <hr className="wordlGame__line" />
-          {!startGame && < SetDifficulty onChosenDifficulty={handleDifficulty} error={handleError} />}
+          {!startGame && < SetDifficulty onStartGame={handleStartGame} error={handleError} />}
           {startGame && < GuessWord onGuess={handleGuess} maxInput={wordLength} abort={handleAbort} results={results} error={handleError} />}
           {showError && <p className="error">{errorMessage}</p>}
         </div>
