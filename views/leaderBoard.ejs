@@ -1,0 +1,28 @@
+<%- include('./partials/head', {wordleGame: false, leaderboard:true})  %>
+<body>
+  <%- include('./partials/header') %>
+  <main>
+  <div class="leaderboard">
+    <div class="filters">
+      <button class="filters__close">X</button>
+      <form class="filters__form">
+        <label>Set word length:</label>
+        <select class="filters__length" name="lengthOption">
+          <option class="filters__lengthOption" value="">Show all</option>
+        <% for(i=3; i <= 8; i++){ %>
+          <option class="filters__lengthOption" 
+          value="<%- i %>"><%- i %></option>
+          <% } %>
+        </select>
+        <label>Only unique letters:</label>
+        <input class="filters__unique" type="checkbox" name="uniqueOption">
+        <button class="filters__filterBtn" type="submit">Filter</button>
+      </form>
+    </div>
+    <button class="filters__showfilter">Filter</button>
+  <div class="scoreList">
+  <%- include('./partials/scores') %>
+    </div>
+</div>
+</main>
+</body>

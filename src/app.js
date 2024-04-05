@@ -1,6 +1,7 @@
 
 import express from "express";
 import apiRouter from "../routes/api.js";
+import leaderboardRouter from "../routes/leaderboard.js";
 import mongoose from "mongoose";
 
 mongoose.connect(process.env.DB_URL)
@@ -11,11 +12,7 @@ app.use(express.json())
 app.set("view engine", "ejs");
 
 app.get('/', async (req, res) => {
-  res.render("index", {wordleGame: true})
-})
-
-app.get('/leaderboard', async (req, res) => {
-
+  res.render("index")
 })
 
 app.get('/about', async (req, res) => {
@@ -23,6 +20,7 @@ app.get('/about', async (req, res) => {
 })
 
 app.use('/api', apiRouter )
+app.use('/leaderboard', leaderboardRouter)
 
 
 app.use('/static', express.static('./static'));
