@@ -1,0 +1,28 @@
+<%- include('./partials/head', {wordleGame: false, leaderboard:true}) %>
+
+  <body>
+    <%- include('./partials/header') %>
+      <main>
+        <div class="leaderboard">
+          <div class="leaderboard__wrapper">
+            <form class="filters">
+              <label class="filters__text filters__text--length">Set word length</label>
+              <select class="filters__length" name="lengthOption">
+                <option class="filters__lengthOption" value="">Show all</option>
+                <% for(i=3; i <=8; i++){ %>
+                  <option class="filters__lengthOption" value="<%- i %>"><%- i %></option>
+                  <% } %>
+              </select>
+              <label class="filters__text filters__text--unique">Only unique letters</label>
+              <input class="filters__unique" type="checkbox" name="uniqueOption">
+              <button class="filters__filterBtn" type="submit">Filter</button>
+            </form>
+            <hr class="leaderboard__line">
+            <div class="scores">
+              <%- include('./partials/scores') %>
+            </div>
+            <%- include('./partials/error', {errorMessage: 'No scores found' }) %>
+          </div>
+        </div>
+      </main>
+  </body>

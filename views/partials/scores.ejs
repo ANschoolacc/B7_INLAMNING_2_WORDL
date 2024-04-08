@@ -1,0 +1,15 @@
+<% scores.forEach(score => { %>
+  <ul class="scores__score">
+    <li class="scores__stat">
+      Name: <%= score.name %>
+    </li>
+    <li class="scores__stat">
+      Word: <%= score.word.toUpperCase() %>
+    </li>
+    <li class="scores__stat">
+      Guesses: <%= score.guesses.length %>
+    </li>
+    <li class="scores__stat">
+      Time: <%= (score.endTime - score.startTime) / 1000 %>.sec</li>
+  </ul>
+  <% }) %>

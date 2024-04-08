@@ -1,0 +1,102 @@
+.leaderboard{
+    align-self: baseline;
+    display: flex;
+    grid-row: 1;
+    justify-content: center;
+
+  &__wrapper{
+      background-color: rgba(44, 44, 44, 0.178);
+      border: solid 5px $color-white;
+      border-radius: 6px;
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.817);
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-self: center;
+      margin: 2rem 1rem 2rem 1rem;
+      margin-top: 2rem;
+      max-width: 600px;
+      padding: 2rem;
+    }
+  &__line{
+      align-self: stretch;
+      border: solid 3px $color-white;
+      margin: 1rem 0 1rem 0;
+    }
+  }
+.filters{
+    display: grid;
+    grid-template-columns:  repeat(4, 25%);
+    grid-template-rows: repeat(4, 25%);
+    margin: 0;
+
+  &__length{
+      background-color: #323960dc;
+      border-radius: 6px;
+      color: $color-white;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.2rem;
+      font-weight: bold;
+      grid-area: 3 / 4 ;
+
+    &:focus{
+        outline: none;
+      }
+    &Option{
+        font-weight: bold;
+      }
+    }
+  &__unique{
+      accent-color: #323960dc;
+      grid-area: 3 / 1;
+      height: 1.5rem;
+      margin: 0;
+
+    &:hover{
+        accent-color: #4f5886a8;
+      }
+    }
+  &__text{
+      color:  $color-white;
+      font-size: 1rem;
+      font-weight: bold;
+      text-align: center;
+
+    &--unique{
+        grid-area: 1 / 1;
+      }
+    &--length{
+        grid-area: 1 / 4;
+      }
+    }
+  &__filterBtn{
+      align-self: center;
+      background-color: rgba(255, 255, 255, 0.123);
+      border: solid 2px rgb(201, 200, 200);
+      border-radius: 6px;
+      color: $color-white;
+      cursor: pointer;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 1.5rem;
+      font-weight: bold;
+      grid-area: 4/ 2 / 4 / 4;
+      justify-self: center;
+
+        &:active {
+            background-color: rgba(211, 211, 211, 0.123);
+          }
+    }
+  }
+.scores{
+  &__score{
+      background-color: #323960dc;
+      border-radius: 6px;
+      color: $color-white;
+      font-size: 1.2rem;
+      font-weight: 600;
+      list-style: none;
+      margin: 0.2rem 0 0.2rem 0;
+      padding: 0;
+      padding: 0.8rem;
+    }
+    }

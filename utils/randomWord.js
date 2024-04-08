@@ -6,26 +6,16 @@ export default function randomWord(wordList, wordLength, uniqueLetters) {
     }
 
     let validList = wordList.filter((word) => word.length === wordLength);
-    
-        if(uniqueLetters) {
-            validList.forEach(word => {
-    
-               for (let i = 0; i < word.length; i++) {
-                    for (let j = i + 1; j < word.length; j++) {
-                        if(word[i] === word[j]) {
-                            
-                            validList.splice(validList.indexOf(word), 1)
-                        }
-                    }
-    
-               }
-            })
-        }
-    
+
+    if (uniqueLetters) {
+        validList = validList.filter(
+            word => new Set(word).size === word.length)
+    }
+
     if (!validList.length) {
         throw new Error("No valid word matching criteria!");
     } else {
         const word = validList[Math.floor(Math.random() * validList.length)];
         return word;
-}
+    }
 }
