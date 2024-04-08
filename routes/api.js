@@ -31,7 +31,7 @@ apiRouter.post('/:id/guess', async (req, res) => {
 
   session.guesses.push(guess);
 
-  const guessResult = feedback(guess, session.word)
+  const guessResult = feedback(guess, session.word);
 
   if (guessResult.map((letter) => letter.result).every(value => value === 'correct')) {
     Object.assign(session, {

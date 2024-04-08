@@ -18,60 +18,44 @@ $standard-font: "Courier New", Courier, monospace;
       }
   }
 html {
-        font-family: $standard-font;
-        font-size: 12px;
-        min-height: 100%;
+          font-family: $standard-font;
+          font-size: 12px;
+          min-height: 100%;
 
     @include breakpoint(($xs)) {
-            font-size: 14px;
-        }
+              font-size: 14px;
+          }
     @include breakpoint(($small)) {
-            font-size: 16px;
-        }
+              font-size: 16px;
+          }
     @include breakpoint(($medium)) {
-            font-size: 20px;
-        }
-    }
+              font-size: 20px;
+          }
+      }
 body {
-        background: linear-gradient(to top right, $bg-secondary, $bg-primary);
-        background-repeat: no-repeat;
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: 6rem 1fr;
-        margin: 0;
-        min-height: 100vh;
-        overflow-x: hidden;
-
-    //background: linear-gradient(to right, #000000, #434343);
-    //background: linear-gradient(to right, #780206, #061161);
-    //background: linear-gradient(to right, #232526, #414345);
-    //background:linear-gradient(-45deg, rgb(12, 155, 122) 40%, black 40% );
-    //background: linear-gradient(to right, #3a6548, #928e6d);
-    //background: linear-gradient(to right, #3c3b3f, #605c3c);
-    //background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
-    //background-image: linear-gradient(to right, #34d447, #f9c750, #ff5d5d);
-    //background-image: linear-gradient(to right, #5a3f37, #2c7744);
-        /*&--correct{
-background-color:
-}
-    &--misplaced{
-    background-color: #f9c750;
-}
-    &--incorrect{
-    background-color: #ff5d5d;
-}*/
-    }
-
+          background: linear-gradient(to top right, $bg-secondary, $bg-primary);
+          background-repeat: no-repeat;
+          display: grid;
+          grid-template-columns: auto;
+          grid-template-rows: 6rem 1fr;
+          margin: 0;
+          min-height: 100vh;
+          overflow-x: hidden;
+      }
     main{
-        display: grid;
-        grid-row: 2 / span 1;
-        grid-template-columns: auto;
-        grid-template-rows: 1fr;
-    }
-
-
+          display: grid;
+          grid-row: 2 / span 1;
+          grid-template-columns: auto;
+          grid-template-rows: 1fr;
+      }
+    .error{
+          border: solid 2px #ff5d5d;
+          color: #ff5d5d;
+          font-size: 0.8rem;
+          font-weight: bold;
+          margin: 1rem 0 0 0;
+          padding: 0.5rem;
+      }
     @import "header";
-
     @import "wordleGame";
-
     @import "leaderboard";
