@@ -24,14 +24,14 @@ header{
         background-color: $bg-primary;
         border-radius: 4px;
         color: $color-white;
-        font-size: 2rem;
+        font-size: 3rem;
         font-weight: 900;
-        line-height: 2.5rem;
+        line-height: 3.2rem;
         margin: 0;
         padding: 0;
         text-align: center;
         text-shadow: 4px -2px 0px $bg-secondary;
-        width: 2.5rem;
+        width: 3.2rem;
     }
 }
 .dropdown{
@@ -60,6 +60,7 @@ header{
         position: absolute;
         right: 1rem;
         top: 0;
+        z-index: 20;
     }
   &__item{
           color: $color-white;
