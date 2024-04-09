@@ -16,7 +16,7 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/about', async (req, res) => {
-
+  res.render('about')
 })
 
 app.use('/api', apiRouter )
