@@ -4,10 +4,10 @@
   }
 .wordlGame {
           align-items: center;
+          flex-direction: column;
           display: flex;
           grid-column: 1;
           grid-row: 1;
-          justify-content: center;
           margin-bottom: 4rem;
 
     &__wrapper {
@@ -17,7 +17,7 @@
               border-radius: 6px;
               box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.817);
               display: flex;
-              flex: 1;
+              //flex: 1;
               flex-direction: column;
               margin: 0 1rem 0 1rem;
               padding: 2rem;
@@ -83,6 +83,7 @@
               margin: 0;
               margin-bottom: 0.5rem;
               width: 1.5rem;
+              accent-color: #323960dc;
       }
   }
 .guess {
@@ -181,16 +182,22 @@
   }
 .sendScore {
     &__filter {
-              align-items: center;
+              /*align-items: center;
               display: flex;
               grid-column: 1;
               grid-row: 1;
               justify-content: center;
-              margin-bottom: 4rem;
+              margin-bottom: 4rem;*/
+              align-items: center;
+          flex-direction: column;
+          display: flex;
+          grid-column: 1;
+          grid-row: 1;
+          margin-bottom: 4rem;
               z-index: 10;
       }
     &__wrapper {
-              align-items: stretch;
+              align-items: center;
               animation: fadeIn 0.2s linear forwards;
               background-color: #323960dc;
               border-radius: 6px;
@@ -198,15 +205,9 @@
               flex: 1;
               flex-direction: column;
               justify-content: center;
-              padding: 3rem;
-
-        @include breakpoint(($small)) {
-                  max-width: 450px;
-          }
-        @include breakpoint(($medium)) {
-                  max-width: 800px;
-                  padding: 4rem 3rem;
-          }
+              padding: 2rem;
+              margin: 0 1rem 0 1rem;
+              max-width: 455px;
       }
     &__title {
               align-self: center;
@@ -259,8 +260,8 @@
                   font-family: "Courier New", Courier, monospace;
                   font-size: 1.2rem;
                   font-weight: bold;
-                  padding: 0.6rem 0;
-                  width: 11rem;
+                  padding: 0.6rem 0.6rem;
+                  max-width: 11rem;
 
             &:active {
                       background-color: rgba(211, 211, 211, 0.123);

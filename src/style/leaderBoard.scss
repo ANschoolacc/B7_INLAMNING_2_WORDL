@@ -13,11 +13,20 @@
       flex: 1;
       flex-direction: column;
       justify-self: center;
-      margin: 2rem 1rem 2rem 1rem;
-      margin-top: 2rem;
+      margin: 0 1rem 2rem 1rem;
       max-width: 600px;
       padding: 2rem;
     }
+
+    &__title{
+      color: $color-white;
+              cursor: default;
+              font-size: 2rem;
+              margin: 0;
+              text-shadow: 1px 1px 1px black;
+              text-align: center;
+    }
+
   &__line{
       align-self: stretch;
       border: solid 3px $color-white;
