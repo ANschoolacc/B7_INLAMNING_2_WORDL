@@ -126,15 +126,15 @@ header {
   display: grid;
 }
 
-.wordlGame {
+.wordleGame {
   align-items: center;
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
   grid-column: 1;
   grid-row: 1;
   margin-bottom: 4rem;
 }
-.wordlGame__wrapper {
+.wordleGame__wrapper {
   align-items: center;
   background-color: rgba(44, 44, 44, 0.178);
   border: solid 5px rgb(244, 244, 244);
@@ -143,36 +143,59 @@ header {
   display: flex;
   flex-direction: column;
   margin: 0 1rem 0 1rem;
+  min-height: 20rem;
   padding: 2rem;
+  position: relative;
 }
 @media screen and (min-width: 550px) {
-  .wordlGame__wrapper {
+  .wordleGame__wrapper {
     max-width: 450px;
   }
 }
 @media screen and (min-width: 960px) {
-  .wordlGame__wrapper {
+  .wordleGame__wrapper {
     max-width: 800px;
   }
 }
-.wordlGame__title {
+.wordleGame__title {
   color: rgb(244, 244, 244);
   cursor: default;
   font-size: 2rem;
   margin: 0;
   text-shadow: 1px 1px 1px black;
 }
-.wordlGame__title--small {
+.wordleGame__title--small {
   color: rgb(244, 244, 244);
   cursor: default;
   font-size: 1.2rem;
   text-shadow: 1px 1px 1px black;
 }
-.wordlGame__line {
+.wordleGame__line {
   border-style: solid;
   border-width: 3px;
   color: rgb(244, 244, 244);
   width: 100%;
+}
+.wordleGame__text {
+  color: rgb(244, 244, 244);
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1.2rem;
+  margin: 0.5rem 0 0.5rem 0;
+}
+.wordleGame__textBox {
+  display: inline-block;
+  height: 0.6rem;
+  width: 0.6rem;
+}
+.wordleGame__textBox--green {
+  background-color: #45cb55;
+}
+.wordleGame__textBox--yellow {
+  background-color: #f9c750;
+}
+.wordleGame__textBox--red {
+  background-color: #ff5d5d;
 }
 
 .difficulty {
@@ -201,13 +224,13 @@ header {
   outline: none;
 }
 .difficulty__setUnique[type=checkbox] {
+  accent-color: rgba(50, 57, 96, 0.862745098);
   cursor: pointer;
   height: 1.5rem;
   line-height: normal;
   margin: 0;
   margin-bottom: 0.5rem;
   width: 1.5rem;
-  accent-color: rgba(50, 57, 96, 0.862745098);
 }
 
 .guess {
@@ -301,33 +324,21 @@ header {
   background-color: rgba(211, 211, 211, 0.123);
 }
 
-.sendScore__filter {
-  /*align-items: center;
-  display: flex;
-  grid-column: 1;
-  grid-row: 1;
-  justify-content: center;
-  margin-bottom: 4rem;*/
-  align-items: center;
-  flex-direction: column;
-  display: flex;
-  grid-column: 1;
-  grid-row: 1;
-  margin-bottom: 4rem;
-  z-index: 10;
-}
 .sendScore__wrapper {
   align-items: center;
   animation: fadeIn 0.2s linear forwards;
   background-color: rgba(50, 57, 96, 0.862745098);
   border-radius: 6px;
+  bottom: 0;
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
+  left: 0;
   padding: 2rem;
-  margin: 0 1rem 0 1rem;
-  max-width: 455px;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 .sendScore__title {
   align-self: center;
@@ -351,18 +362,20 @@ header {
   padding-left: 1rem;
 }
 .sendScore__post {
-  align-self: stretch;
   display: flex;
   justify-content: center;
 }
 .sendScore__postInput {
   background-color: rgb(244, 244, 244);
+  border: none;
   border-radius: 4px;
   font-family: "Courier New", Courier, monospace;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: bold;
+  margin: 0;
   margin-right: 0.5rem;
-  padding: 0.6rem 0;
+  padding: 0;
+  padding: 0.5rem 0;
   text-align: center;
   width: 11rem;
 }
@@ -376,9 +389,8 @@ header {
   color: rgb(244, 244, 244);
   cursor: pointer;
   font-family: "Courier New", Courier, monospace;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   font-weight: bold;
-  padding: 0.6rem 0.6rem;
   max-width: 11rem;
 }
 .sendScore__postSubmit:active {

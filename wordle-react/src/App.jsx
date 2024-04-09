@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import GuessWord from "./components/GuessWord";
 import SetDifficulty from "./components/SetDifficulty";
-import SendScore from "./components/SendScore"
+import SendScore from "./components/SendScore";
+import GameInfo from "./components/GameInfo";
 import "./scss/app.scss";
 
 function App() {
@@ -111,13 +112,14 @@ function App() {
 
   return (
     <>
-      {win && < SendScore onPostScore={handleScore} score={score} abort={handleAbort} error={handleError} />}
-      <div className="wordlGame">
-        <div className="wordlGame__wrapper">
-          <h2 className="wordlGame__title">
+      <div className="wordleGame">
+        <div className="wordleGame__wrapper">
+        {win && < SendScore onPostScore={handleScore} score={score} abort={handleAbort} error={handleError} />}
+          {!startGame && < GameInfo />}
+          <h2 className="wordleGame__title">
             {!startGame ? "Choose difficulty!" : "Guess the word!"}
           </h2>
-          <hr className="wordlGame__line" />
+          <hr className="wordleGame__line" />
           {!startGame && < SetDifficulty onStartGame={handleStartGame} error={handleError} />}
           {startGame && < GuessWord onGuess={handleGuess} maxInput={wordLength} abort={handleAbort} results={results} error={handleError} />}
           {showError && <p className="error">{errorMessage}</p>}

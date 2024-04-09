@@ -7,12 +7,11 @@ export default function SendScore({ onPostScore, score, abort }) {
   const [error, setError] = useState()
 
   return (
-    <div className="sendScore__filter">
       <div className="sendScore__wrapper">
         {posted && <><h2 className="sendScore__title">Score posted!</h2></>}
         {!posted && <><h2 className="sendScore__title" >You did it!</h2>
           <h2 className="sendScore__title--small">Post you'r score and/or start a new game</h2>
-          <hr className="wordlGame__line" />
+          <hr className="wordleGame__line" />
           <ul className="sendScore__score" >
             <li className="sendScore__scoreItem" >
               {`Word: ${score.word.toUpperCase()}`}</li>
@@ -46,6 +45,5 @@ export default function SendScore({ onPostScore, score, abort }) {
             abort();
           }}>New game</a>
       </div>
-    </div>
   )
 }
