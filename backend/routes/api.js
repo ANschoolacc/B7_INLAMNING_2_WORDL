@@ -5,6 +5,7 @@ import feedback from "../utils/feedback.js";
 import getDictionary from "../utils/wordList.js";
 import { Score } from "../src/models.js";
 
+
 const apiRouter = express.Router();
 
 let sessions = [];
@@ -50,9 +51,11 @@ apiRouter.post('/:id/score', async (req, res) => {
   Object.assign(session, { name: req.body.playerName })
   const scoreModel = new Score(session);
   await scoreModel.save();
+
   sessions = sessions.filter(session => {
     return session.sessionId !== sessionId;
   })
+  
   res.status(201).send('Score posted!')
 })
 

@@ -3,6 +3,7 @@ import express from "express";
 import apiRouter from "../routes/api.js";
 import leaderboardRouter from "../routes/leaderboard.js";
 import mongoose from "mongoose";
+import 'dotenv/config'
 
 mongoose.connect(process.env.DB_URL)
 
