@@ -13,7 +13,6 @@ leaderboardRouter.get('/', async (req, res) => {
     req.query.unique_letters)
 
   if (!scores) {
-    console.log('No scores found')
     res.statusMessage = 'No scores found'
     res.status(404).render('leaderboard', { scores: [], noScores: true })
   } else if (!scores.length) {

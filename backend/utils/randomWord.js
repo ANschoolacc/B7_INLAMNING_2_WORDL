@@ -2,7 +2,7 @@
 
 export default function randomWord(wordList, wordLength, uniqueLetters) {
     if (!wordList || !wordList.length || !Array.isArray(wordList)) {
-        throw new Error("No words found on server!");
+        return
     }
 
     let validList = wordList.filter((word) => word.length === wordLength);
@@ -13,7 +13,7 @@ export default function randomWord(wordList, wordLength, uniqueLetters) {
     }
 
     if (!validList.length) {
-        throw new Error("No valid word matching criteria!");
+        return
     } else {
         const word = validList[Math.floor(Math.random() * validList.length)];
         return word;

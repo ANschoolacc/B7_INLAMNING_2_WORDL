@@ -7,273 +7,270 @@ $xxl: 1650px;
 $spec: 1260px;
 $color-white: rgb(244, 244, 244);
 $standard-font: "Courier New", Courier, monospace;
+
 @mixin breakpoint($point) {
-    @media screen and (min-width: $point) {
-        @content;
-      }
+  @media screen and (min-width: $point) {
+    @content;
   }
+}
+
 @mixin breakpointMax($point) {
-    @media screen and (max-width: $point) {
-        @content;
-      }
+  @media screen and (max-width: $point) {
+    @content;
   }
+}
+
 html {
-        font-family: $standard-font;
-        font-size: 12px;
-        min-height: 100%;
+  font-family: $standard-font;
+  font-size: 12px;
+  min-height: 100%;
 
-    @include breakpoint(($xs)) {
-            font-size: 14px;
-        }
-    @include breakpoint(($small)) {
-            font-size: 16px;
-        }
-    @include breakpoint(($medium)) {
-            font-size: 24px;
-        }
-    }
+  @include breakpoint(($xs)) {
+    font-size: 14px;
+  }
+
+  @include breakpoint(($small)) {
+    font-size: 16px;
+  }
+
+  @include breakpoint(($medium)) {
+    font-size: 24px;
+  }
+}
+
 body {
-        background: linear-gradient(to top right, #f3904f, #3b4371);
-        background-repeat: no-repeat;
-        /*display: grid;
-        grid-template-columns: auto;
-        grid-template-rows: 6rem 1fr;
-        margin: 0;
-        min-height: 100vh;
-        overflow-x: hidden;*/
-        display: grid;
-          grid-row: 2 / span 1;
-          grid-template-columns: auto;
-          grid-template-rows: 1fr;
+  background: linear-gradient(to top right, #f3904f, #3b4371);
+  background-repeat: no-repeat;
+  display: grid;
+  grid-row: 2 / span 1;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr;
+}
 
-    //background: linear-gradient(to right, #000000, #434343);
-    //background: linear-gradient(to right, #780206, #061161);
-    //background: linear-gradient(to right, #232526, #414345);
-    //background:linear-gradient(-45deg, rgb(12, 155, 122) 40%, black 40% );
-    //background: linear-gradient(to right, #3a6548, #928e6d);
-    //background: linear-gradient(to right, #3c3b3f, #605c3c);
-    //background-image: linear-gradient(to right, #0f0c29, #302b63, #24243e);
-    //background-image: linear-gradient(to right, #34d447, #f9c750, #ff5d5d);
-    //background-image: linear-gradient(to right, #5a3f37, #2c7744);
-        /*&--correct{
-background-color:
+#root {
+  display: grid;
 }
-    &--misplaced{
-    background-color: #f9c750;
-}
-    &--incorrect{
-    background-color: #ff5d5d;
-}*/
-    }
-    #root {
-        display: grid;
-}
+
 .wordleGame {
-        align-items: center;
-        flex-direction: column;
-        display: flex;
-        grid-column: 1;
-        grid-row: 1;
-        margin-bottom: 4rem;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  grid-column: 1;
+  grid-row: 1;
+  margin-bottom: 4rem;
 
   &__wrapper {
     position: relative;
-            align-items: center;
-            background-color: rgba(44, 44, 44, 0.178);
-            border: solid 5px $color-white;
-            border-radius: 6px;
-            box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.817);
-            display: flex;
-            //flex: 1;
-            flex-direction: column;
-            margin: 0 1rem 0 1rem;
-            padding: 2rem;
-            min-height: 20rem;
+    align-items: center;
+    background-color: rgba(44, 44, 44, 0.178);
+    border: solid 5px $color-white;
+    border-radius: 6px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.817);
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem 0 1rem;
+    padding: 2rem;
+    min-height: 20rem;
 
-      @include breakpoint(($small)) {
-                max-width: 450px;
-        }
-      @include breakpoint(($medium)) {
-                max-width: 800px;
-        }
+    @include breakpoint(($small)) {
+      max-width: 450px;
     }
+
+    @include breakpoint(($medium)) {
+      max-width: 800px;
+    }
+  }
+
   &__title {
-            color: $color-white;
-            cursor: default;
-            font-size: 2rem;
-            margin: 0;
-            text-shadow: 1px 1px 1px black;
+    color: $color-white;
+    cursor: default;
+    font-size: 2rem;
+    margin: 0;
+    text-shadow: 1px 1px 1px black;
 
-      &--small {
-                color: $color-white;
-                cursor: default;
-                font-size: 1.2rem;
-                text-shadow: 1px 1px 1px black;
-        }
+    &--small {
+      color: $color-white;
+      cursor: default;
+      font-size: 1.2rem;
+      text-shadow: 1px 1px 1px black;
     }
+  }
+
   &__line {
-            border-style: solid;
-            border-width: 3px;
-            color: $color-white;
-            width: 100%;
-    }
+    border-style: solid;
+    border-width: 3px;
+    color: $color-white;
+    width: 100%;
+  }
 
-    &__text{
-        color: $color-white;
-        font-weight: bold;
-        font-size: 0.8rem;
-        margin: 0.5rem 0 0.5rem 0;
-        line-height: 1.2rem;
+  &__text {
+    color: $color-white;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin: 0.5rem 0 0.5rem 0;
+    line-height: 1.2rem;
 
-        &Box{
-            display: inline-block;
-            height: 0.6rem;
-            width: 0.6rem;
+    &Box {
+      display: inline-block;
+      height: 0.6rem;
+      width: 0.6rem;
 
-            &--green{
-                background-color: #45cb55;
-            }
+      &--green {
+        background-color: #45cb55;
+      }
 
-            &--yellow{
-                background-color: #f9c750;
-            }
+      &--yellow {
+        background-color: #f9c750;
+      }
 
-            &--red{
-                background-color: #ff5d5d;
-            }
-        }
-    }
-}
-.difficulty {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-
-  &__info {
-            color: $color-white;
-            font-size: 1.2rem;
-            font-weight: 600;
-    }
-  &__setLength {
-            border: none;
-            font-size: 1.2rem;
-            height: 1.5rem;
-            margin: 0;
-            padding: 0;
-            padding-block: 0;
-            padding-inline: 0;
-            text-align: center;
-            width: 1.5rem;
-
-      &:focus {
-                outline: none;
-        }
-    }
-  &__setUnique[type="checkbox"] {
-            cursor: pointer;
-            height: 1.5rem;
-            line-height: normal;
-            margin: 0;
-            margin-bottom: 0.5rem;
-            width: 1.5rem;
-            accent-color: #323960dc;
-    }
-}
-.guess {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-
-  &__letterBox {
-            display: flex;
-            gap: 0.5rem;
-    }
-  &__letterInput {
-            background-color: $color-white;
-            border-radius: 4px;
-            border-style: none;
-            font-family: $standard-font;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 0.6rem 0;
-            text-align: center;
-            width: 11rem;
-
-        &:focus {
-              outline: none;
+      &--red {
+        background-color: #ff5d5d;
       }
     }
-  &__giveUp {
-            border: solid 2px #ff5d5d;
-            border-radius: 6px;
-            color: #ff5d5d;
-            cursor: pointer;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-top: 1rem;
-            padding: 0.3rem;
-            text-decoration: none;
-
-      &:active {
-                background-color: rgba(255, 252, 252, 0.059);
-        }
-    }
+  }
 }
+
+.difficulty {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__info {
+    color: $color-white;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  &__setLength {
+    border: none;
+    font-size: 1.2rem;
+    height: 1.5rem;
+    margin: 0;
+    padding: 0;
+    padding-block: 0;
+    padding-inline: 0;
+    text-align: center;
+    width: 1.5rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__setUnique[type="checkbox"] {
+    cursor: pointer;
+    height: 1.5rem;
+    line-height: normal;
+    margin: 0;
+    margin-bottom: 0.5rem;
+    width: 1.5rem;
+    accent-color: #323960dc;
+  }
+}
+
+.guess {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__letterBox {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  &__letterInput {
+    background-color: $color-white;
+    border-radius: 4px;
+    border-style: none;
+    font-family: $standard-font;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.6rem 0;
+    text-align: center;
+    width: 11rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__giveUp {
+    border: solid 2px #ff5d5d;
+    border-radius: 6px;
+    color: #ff5d5d;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    padding: 0.3rem;
+    text-decoration: none;
+
+    &:active {
+      background-color: rgba(255, 252, 252, 0.059);
+    }
+  }
+}
+
 .result {
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        justify-content: center;
-        margin: 0.5rem 0 1rem 0;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: center;
+  margin: 0.5rem 0 1rem 0;
 
   &__word {
-            display: flex;
-            gap: 0.5rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-    }
-  &__letter {
-            border-radius: 4px;
-            color: $color-white;
-            cursor: default;
-            display: inline-block;
-            font-size: 1.5rem;
-            font-weight: bold;
-            line-height: 2rem;
-            text-align: center;
-            width: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 
-      &--correct {
-                background-color: #45cb55;
-        }
-      &--misplaced {
-                background-color: #f9c750;
-        }
-      &--incorrect {
-                background-color: #ff5d5d;
-        }
+  &__letter {
+    border-radius: 4px;
+    color: $color-white;
+    cursor: default;
+    display: inline-block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    line-height: 2rem;
+    text-align: center;
+    width: 2rem;
+
+    &--correct {
+      background-color: #45cb55;
     }
+
+    &--misplaced {
+      background-color: #f9c750;
+    }
+
+    &--incorrect {
+      background-color: #ff5d5d;
+    }
+  }
 }
+
 .gameButton {
-        background-color: rgba(255, 255, 255, 0.123);
-        border: solid 2px rgb(201, 200, 200);
-        border-radius: 6px;
-        color: $color-white;
-        cursor: pointer;
-        font-family: "Courier New", Courier, monospace;
-        font-size: 1.2rem;
-        font-weight: bold;
-        padding: 0.6rem 0;
-        width: 11rem;
+  background-color: rgba(255, 255, 255, 0.123);
+  border: solid 2px rgb(201, 200, 200);
+  border-radius: 6px;
+  color: $color-white;
+  cursor: pointer;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.6rem 0;
+  width: 11rem;
 
   &:active {
-            background-color: rgba(211, 211, 211, 0.123);
-    }
+    background-color: rgba(211, 211, 211, 0.123);
+  }
 }
+
 .sendScore {
   &__wrapper {
     position: absolute;
@@ -285,109 +282,115 @@ background-color:
     align-items: center;
     animation: fadeIn 0.2s linear forwards;
     display: flex;
-    //flex: 1;
     flex-direction: column;
     justify-content: end;
     padding: 2rem;
-    }
+  }
+
   &__title {
-            align-self: center;
-            color: $color-white;
-            cursor: default;
-            font-size: 2rem;
-            margin: 0;
-            text-shadow: 1px 1px 1px black;
+    align-self: center;
+    color: $color-white;
+    cursor: default;
+    font-size: 2rem;
+    margin: 0;
+    text-shadow: 1px 1px 1px black;
 
-      &--small {
-                align-self: center;
-                color: $color-white;
-                cursor: default;
-                font-size: 1rem;
-                text-shadow: 1px 1px 1px black;
-        }
+    &--small {
+      align-self: center;
+      color: $color-white;
+      cursor: default;
+      font-size: 1rem;
+      text-shadow: 1px 1px 1px black;
     }
+  }
+
   &__score {
-            color: white;
-            font-weight: bold;
-            list-style: none;
-            padding-left: 1rem;
-    }
+    color: white;
+    font-weight: bold;
+    list-style: none;
+    padding-left: 1rem;
+  }
+
   &__post {
-            display: flex;
-            justify-content: center;
-            
-      &Input {
-                background-color: $color-white;
-                border-radius: 4px;
-                font-family: $standard-font;
-                font-size: 0.9rem;
-                font-weight: bold;
-                padding: 0;
-                border: none;
-                margin: 0;
-                margin-right: 0.5rem;
-                padding: 0.5rem 0;
-                text-align: center;
-                width: 11rem;
+    display: flex;
+    justify-content: center;
 
-            &:focus {
-                  outline: none;
-          }
-        }
-      &Submit {
-                background-color: rgba(255, 255, 255, 0.123);
-                border: solid 2px rgb(201, 200, 200);
-                border-radius: 6px;
-                color: $color-white;
-                cursor: pointer;
-                font-family: "Courier New", Courier, monospace;
-                font-size: 0.9rem;
-                font-weight: bold;
-                max-width: 11rem;
+    &Input {
+      background-color: $color-white;
+      border-radius: 4px;
+      font-family: $standard-font;
+      font-size: 0.9rem;
+      font-weight: bold;
+      padding: 0;
+      border: none;
+      margin: 0;
+      margin-right: 0.5rem;
+      padding: 0.5rem 0;
+      text-align: center;
+      width: 11rem;
 
-                
-
-          &:active {
-                    background-color: rgba(211, 211, 211, 0.123);
-            }
-        }
+      &:focus {
+        outline: none;
+      }
     }
-  &__newGame {
-            align-self: center;
-            background-color: rgba(255, 255, 255, 0.123);
-            border: solid 2px $color-white;
-            border-radius: 6px;
-            color: $color-white;
-            cursor: pointer;
-            font-size: 1.1rem;
-            font-weight: bold;
-            margin-top: 1rem;
-            padding: 0.3rem;
-            text-align: center;
-            text-decoration: none;
-            width: 8rem;
+
+    &Submit {
+      background-color: rgba(255, 255, 255, 0.123);
+      border: solid 2px rgb(201, 200, 200);
+      border-radius: 6px;
+      color: $color-white;
+      cursor: pointer;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.9rem;
+      font-weight: bold;
+      max-width: 11rem;
+
+
 
       &:active {
-                background-color: rgba(255, 252, 252, 0.059);
-        }
+        background-color: rgba(211, 211, 211, 0.123);
+      }
     }
+  }
+
+  &__newGame {
+    align-self: center;
+    background-color: rgba(255, 255, 255, 0.123);
+    border: solid 2px $color-white;
+    border-radius: 6px;
+    color: $color-white;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    padding: 0.3rem;
+    text-align: center;
+    text-decoration: none;
+    width: 8rem;
+
+    &:active {
+      background-color: rgba(255, 252, 252, 0.059);
+    }
+  }
 }
 
-.error{
-    border: solid 2px #ff5d5d;
-    color: #ff5d5d;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin: 1rem 0 0 0;
-    padding: 0.5rem;
+.error {
+  border: solid 2px #ff5d5d;
+  color: #ff5d5d;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin: 1rem 0 0 0;
+  padding: 0.5rem;
 }
+
 @keyframes fadeIn {
   0% {
-            opacity: 0%;
-            scale: 80%;
-    }
+    opacity: 0%;
+    scale: 80%;
+  }
+
   100% {
-            opacity: 100%;
-            scale: 100%;
-    }
+    opacity: 100%;
+    scale: 100%;
+  }
 }
