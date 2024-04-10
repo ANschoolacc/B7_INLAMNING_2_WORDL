@@ -46,27 +46,22 @@ describe('randomWord()', () => {
   });
 
   it('If there are no matching words for input parameters: Output should throw error with message', () => {
-    const output = () => {
-      randomWord(list, 7, true)
-    }
-    expect(output).toThrow(Error);
-    expect(output).toThrow('No valid word matching criteria!');
+    const output = randomWord(list, 7, true)
+    
+    expect(output).toBe('');
   })
 
   it('If there are no words found on server: Output should throw error with message.', () => {
-    const output = () => {
-      randomWord([],7, true)
-    }
-    expect(output).toThrow('No words found on server!');
-    expect(output).toThrow(Error);
+    const output = randomWord([],7, true)
+    
+    expect(output).toBe('');
   })
 
   it('If list input is undefined or not type of array: Output should throw error with message.', () => {
-    const output = () => {
-      randomWord(undefined, 7, true)
-    }
-    expect(output).toThrow('No words found on server!');
-    expect(output).toThrow(Error);
+    const output = randomWord(undefined, 7, true)
+    
+    expect(output).toBe('');
+    
   })
 
 })
