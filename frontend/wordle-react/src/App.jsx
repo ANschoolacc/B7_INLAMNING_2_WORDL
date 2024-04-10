@@ -9,23 +9,23 @@ function App() {
   const [results, setResults] = useState([]);
   const [startGame, setStartGame] = useState(false);
   const [win, setWin] = useState(false);
-  const [showError, setShowError] = useState(false);
   const [wordLength, setWordLength] = useState();
   const [score, setScore] = useState()
   const [errorMessage, setErrorMessage] = useState();
   const [gameId, setGameId] = useState();
+  const [posted, setPosted] = useState(false);
   const timerId = useRef(null);
 
   useEffect(() => {
-    if (showError) {
+    if (errorMessage) {
       timerId.current = setTimeout(() => {
-        setShowError(false)
+        setErrorMessage()
       }, 3000)
     }
     return () => {
       clearTimeout(timerId.current)
     };
-  }, [showError])
+  }, [errorMessage])
 
   async function handleStartGame(chosenDifficulty) {
     const response = await fetch("/api/new_game", {
@@ -43,7 +43,6 @@ function App() {
     setGameId(id);
     }else {
       handleError('No word found')
-      throw new Error(`Something went wrong with the request. Error code: ${response.status}`);
     }
   }
 
@@ -79,8 +78,8 @@ function App() {
       setWin(!win)
     }
   }else {
-    handleError('Something went wrong');
-    throw new Error(`Something went wrong with the request. Error code: ${response.status}`);
+    const data = await response.json();
+    handleError(data);
   }
   }
 
@@ -93,7 +92,9 @@ function App() {
       body: JSON.stringify({ playerName }),
     });
     if(!response.ok){
-      throw new Error(`Something went wrong with the request. Error code: ${response.status}`);
+      handleError(await response.json())
+    }else{
+      setPosted(true)
     }
   }
 
@@ -103,18 +104,18 @@ function App() {
     setResults([])
     setScore();
     setGameId();
+    setPosted(false)
   }
 
   function handleError(message) {
     setErrorMessage(message)
-    setShowError(true)
   }
 
   return (
     <>
       <div className="wordleGame">
         <div className="wordleGame__wrapper">
-        {win && < SendScore onPostScore={handleScore} score={score} abort={handleAbort} error={handleError} />}
+        {win && < SendScore onPostScore={handleScore} score={score} abort={handleAbort} posted={posted} onError={handleError} errorMessage={errorMessage} />}
           {!startGame && < GameInfo />}
           <h2 className="wordleGame__title">
             {!startGame ? "Choose difficulty!" : "Guess the word!"}
@@ -122,7 +123,7 @@ function App() {
           <hr className="wordleGame__line" />
           {!startGame && < SetDifficulty onStartGame={handleStartGame} error={handleError} />}
           {startGame && < GuessWord onGuess={handleGuess} maxInput={wordLength} abort={handleAbort} results={results} error={handleError} />}
-          {showError && <p className="error">{errorMessage}</p>}
+          {errorMessage && <p className="error">{errorMessage}</p>}
         </div>
       </div>
     </>

@@ -7,56 +7,65 @@ $bg-primary: #3b4371;
 $bg-secondary: #f3904f;
 $color-white: rgb(244, 244, 244);
 $standard-font: "Courier New", Courier, monospace;
-@mixin breakpoint($point) {
-    @media screen and (min-width: $point) {
-        @content;
-      }
-  }
-@mixin breakpointMax($point) {
-    @media screen and (max-width: $point) {
-        @content;
-      }
-  }
-html {
-          font-family: $standard-font;
-          font-size: 12px;
-          min-height: 100%;
 
-    @include breakpoint(($xs)) {
-              font-size: 14px;
-          }
-    @include breakpoint(($small)) {
-              font-size: 16px;
-          }
-    @include breakpoint(($medium)) {
-              font-size: 20px;
-          }
-      }
+@mixin breakpoint($point) {
+  @media screen and (min-width: $point) {
+    @content;
+  }
+}
+
+@mixin breakpointMax($point) {
+  @media screen and (max-width: $point) {
+    @content;
+  }
+}
+
+html {
+  font-family: $standard-font;
+  font-size: 12px;
+  min-height: 100%;
+
+  @include breakpoint(($xs)) {
+    font-size: 14px;
+  }
+
+  @include breakpoint(($small)) {
+    font-size: 16px;
+  }
+
+  @include breakpoint(($medium)) {
+    font-size: 20px;
+  }
+}
+
 body {
-          background: linear-gradient(to top right, $bg-secondary, $bg-primary);
-          background-repeat: no-repeat;
-          display: grid;
-          grid-template-columns: auto;
-          grid-template-rows: 10rem 1fr;
-          margin: 0;
-          min-height: 100vh;
-          overflow-x: hidden;
-      }
-    main{
-          display: grid;
-          grid-row: 2 / span 1;
-          grid-template-columns: auto;
-          grid-template-rows: 1fr;
-      }
-    .error{
-          border: solid 2px #ff5d5d;
-          color: #ff5d5d;
-          font-size: 0.8rem;
-          font-weight: bold;
-          margin: 1rem 0 0 0;
-          padding: 0.5rem;
-      }
-    @import "header";
-    @import "wordleGame";
-    @import "leaderboard";
-    @import "about";
+  background: linear-gradient(to top right, $bg-secondary, $bg-primary);
+  background-repeat: no-repeat;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 10rem 1fr;
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+main {
+  display: grid;
+  grid-row: 2 / span 1;
+  grid-template-columns: auto;
+  grid-template-rows: 1fr;
+}
+
+.error {
+  border: solid 2px #ff5d5d;
+  color: #ff5d5d;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin: 1rem 0 0 0;
+  padding: 0.5rem;
+}
+
+@import "header";
+@import "wordleGame";
+@import "leaderboard";
+@import "about";

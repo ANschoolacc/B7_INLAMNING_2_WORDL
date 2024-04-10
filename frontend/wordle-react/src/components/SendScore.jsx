@@ -1,10 +1,8 @@
 import { useState } from "react";
 
 
-export default function SendScore({ onPostScore, score, abort }) {
-  const [posted, setPosted] = useState(false)
+export default function SendScore({ onPostScore, score, posted, onError, errorMessage, abort }) {
   const [player, setPlayer] = useState('');
-  const [error, setError] = useState()
 
   return (
       <div className="sendScore__wrapper">
@@ -27,19 +25,17 @@ export default function SendScore({ onPostScore, score, abort }) {
           <form action="" className="sendScore__post" onSubmit={(e) => {
             e.preventDefault();
             if (!player.length) {
-              setError('Please insert a name before posting')
+              onError('Please insert a name before posting')
               return
             }
-            setError()
             onPostScore(player)
-            setPosted(true)
           }}>
             <input className="sendScore__postInput" placeholder="Input name" type="text" maxLength={10} onChange={(e) => {
               setPlayer(e.target.value)
             }} />
             <button className="sendScore__postSubmit" type="submit">Post Score</button>
           </form></>}
-        {error && <p className="error">{error}</p>}
+          {errorMessage && <p className="error">{errorMessage}</p>}
         <a className="sendScore__newGame"
           onClick={(e) => {
             abort();

@@ -143,7 +143,7 @@ header {
   display: flex;
   flex-direction: column;
   margin: 0 1rem 0 1rem;
-  min-height: 20rem;
+  min-height: 24rem;
   padding: 2rem;
   position: relative;
 }
